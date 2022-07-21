@@ -27,16 +27,16 @@
     "type": "announcement",
     "date": "2022-07-18",
     "level": "info",
-    "title": "GOC Cal Tech",
-    "description": "Prepare your slides",
-    "descriptionUrl": ""
+    "title": "Upcoming GO Consortium Meeting: Cal Tech",
+    "description": "California Institute of Technology, Pasadena, CA from Tuesday, October 11th - Thursday, October 13th",
+    "descriptionUrl": "https://wiki.geneontology.org/Consortium_Meetings_and_Workshops#2022"
   },
   {
     "type": "announcement",
     "date": "2022-07-18",
     "level": "danger",
     "title": "New announcement!",
-    "description": "Maintenance at 4:00 PM (PST). Please save your work",
+    "description": "Next Maintenance at 4:00 PM (PST) on July 28th. Please save your work",
     "descriptionUrl": ""
   }
 ]
