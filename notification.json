@@ -1,11 +1,19 @@
 [
   {
     "type": "update",
-    "date": "2020-07-20",
+    "date": "2022-07-20",
     "level": "info",
-    "title": "Version 2.1.0",
-    "description": "Now you can model copy. Check the tutorial",
-    "descriptionUrl": ""
+    "title": "Update 2022-06-23",
+    "description": "Highlights: Model Copy. Updated Ontology",
+    "descriptionUrl": "https://github.com/geneontology/noctua-announcements/blob/dev/docs/updates/update-2022-06-23.md"
+  },
+  {
+    "type": "update",
+    "date": "2022-07-20",
+    "level": "info",
+    "title": "New Model Copy Getting Started",
+    "description": "Check out the getting started tutorial for model copy",
+    "descriptionUrl": "https://github.com/geneontology/noctua-announcements/blob/dev/docs/model-copy/model-copy.md"
   },
   {
     "type": "reminder",
