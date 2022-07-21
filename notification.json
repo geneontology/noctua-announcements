@@ -8,6 +8,14 @@
     "descriptionUrl": ""
   },
   {
+    "type": "reminder",
+    "date": "2022-07-18",
+    "level": "info",
+    "title": "Visual Pathway Editor",
+    "description": "Check out the new documentation and tutorial to get started",
+    "descriptionUrl": "https://docs.google.com/presentation/d/1TCW9e7OPZJ6lngRYPmSuhqhgOquQDfs9ntiahe_s-ks/edit#slide=id.g120fba8fc57_0_217"
+  },
+  {
     "type": "announcement",
     "date": "2022-07-18",
     "level": "info",
