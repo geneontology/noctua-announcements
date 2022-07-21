@@ -10,7 +10,7 @@
   {
     "type": "announcement",
     "date": "2022-07-18",
-    "level": "warn",
+    "level": "warning",
     "title": "New announcement!",
     "description": "Maintenance at 4:00 PM (PST). Please save your work",
     "descriptionUrl": ""
