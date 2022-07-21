@@ -1,12 +1,4 @@
 [
-    {
-    "type": "announcement",
-    "date": "2022-07-18",
-    "level": "danger",
-    "title": "GOC Cal Tech",
-    "description": "Prepare your slides",
-    "descriptionUrl": ""
-  },
   {
     "type": "update",
     "date": "2020-07-20",
@@ -18,7 +10,15 @@
   {
     "type": "announcement",
     "date": "2022-07-18",
-    "level": "warning",
+    "level": "info",
+    "title": "GOC Cal Tech",
+    "description": "Prepare your slides",
+    "descriptionUrl": ""
+  },
+  {
+    "type": "announcement",
+    "date": "2022-07-18",
+    "level": "danger",
     "title": "New announcement!",
     "description": "Maintenance at 4:00 PM (PST). Please save your work",
     "descriptionUrl": ""
