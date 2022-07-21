@@ -2,6 +2,7 @@
   {
     "type": "update",
     "date": "2022-07-20",
+    "expiresOn": "2022-07-28",
     "level": "info",
     "title": "Update 2022-06-23",
     "description": "Highlights: Model Copy. Updated Ontology",
@@ -26,6 +27,7 @@
   {
     "type": "announcement",
     "date": "2022-07-18",
+    "expiresOn": "2022-11-13",
     "level": "info",
     "title": "Upcoming GO Consortium Meeting: Cal Tech",
     "description": "California Institute of Technology, Pasadena, CA from Tuesday, October 11th - Thursday, October 13th",
@@ -34,6 +36,7 @@
   {
     "type": "announcement",
     "date": "2022-07-18",
+    "expiresOn": "2022-07-29",
     "level": "danger",
     "title": "New announcement!",
     "description": "Next Maintenance at 4:00 PM (PST) on July 28th. Please save your work",
