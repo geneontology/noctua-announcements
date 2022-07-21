@@ -1,0 +1,16 @@
+[
+  {
+    "type": "update",
+    "date": "2020-07-20",
+    "title": "Version 2.1.0",
+    "content": "Now you can model copy. Check the tutorial",
+    "moreContentUrl": ""
+  },
+  {
+    "type": "announcement",
+    "date": "2022-07-18",
+    "title": "New announcement!",
+    "content": "Maintenance at 4:00 (PST). Please save your work",
+    "moreContentUrl": ""
+  }
+]
