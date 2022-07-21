@@ -1,4 +1,12 @@
 [
+    {
+    "type": "announcement",
+    "date": "2022-07-18",
+    "level": "danger",
+    "title": "GOC Cal Tech",
+    "description": "Prepare your slides",
+    "descriptionUrl": ""
+  },
   {
     "type": "update",
     "date": "2020-07-20",
