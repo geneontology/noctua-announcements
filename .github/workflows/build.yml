@@ -37,12 +37,6 @@ jobs:
         with:
           node-version: '20'
 
-      # Turns Pages on for the repo if it isn't already, so the first run of this
-      # workflow publishes instead of failing on an unconfigured Pages site.
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - run: npm install --no-audit --no-fund
 
       - name: Build announcements.json
