@@ -1,0 +1,15 @@
+---
+title: Short headline goes here
+level: info
+apps: [landing, form, vpe]
+starts: 2026-01-01
+expires: 2026-01-31
+---
+
+The first paragraph is what shows in the banner, so keep it to one or two sentences.
+
+Everything after it shows in the announcements panel when someone clicks the bell.
+You can use **bold**, [links](https://geneontology.org), and lists:
+
+- like this
+- and this
