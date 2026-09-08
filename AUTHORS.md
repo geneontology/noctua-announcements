@@ -40,7 +40,9 @@ of the announcement.
 | Setting | Required? | What it does |
 | --- | --- | --- |
 | `title` | **yes** | The headline. Keep it short — it shows in the banner. |
-| `level` | **yes** | The color. One of `info`, `success`, `warning`, `danger`. |
+| `level` | **yes** | How urgent it is, which picks the color. |
+| `type` | no | What kind of thing it is, which picks the icon. Defaults to `announcement`. |
+| `pinned` | no | `true` keeps it at the top and stops people dismissing it. |
 | `expires` | no | The day it stops showing, as `YYYY-MM-DD`. Leave it out and it shows forever. |
 | `starts` | no | The day it starts showing, as `YYYY-MM-DD`. Leave it out and it shows right away. |
 | `apps` | no | Which apps show it. Leave it out and all three do. |
@@ -54,6 +56,43 @@ of the announcement.
 | `success` | green | Something finished well — maintenance is over, a release went out. |
 | `warning` | yellow | Something people should know before it bites them. |
 | `danger` | red | Outages and anything urgent. |
+
+### `type` — the icon
+
+`level` says how urgent something is. `type` says what kind of thing it is, and
+picks the icon shown beside it in the notification list.
+
+| Value | Icon | Use it for |
+| --- | --- | --- |
+| `announcement` | megaphone | General news. This is the default. |
+| `update` | sparkles | A release, new features, a changelog. |
+| `reminder` | alarm clock | A nudge about something already announced. |
+| `maintenance` | wrench | Outages and downtime. |
+| `event` | calendar | Meetings and workshops. |
+
+Note there's no `warning` type — urgency is what `level` is for, so a warning is
+`level: warning` with whatever `type` actually describes it.
+
+### `pinned` — making one stay put
+
+A pinned announcement sits at the top of the list, always shows its banner, and
+**cannot be dismissed or cleared**. It only goes away when you delete it or its
+`expires` date passes.
+
+```
+---
+title: Noctua is in read-only mode
+level: warning
+type: maintenance
+pinned: true
+---
+
+Saving is disabled while we migrate the database. We'll post again when it's back.
+```
+
+Use this sparingly — one at a time at most. A banner nobody can close is
+irritating fast, so it's for things people genuinely must not miss, like an
+ongoing outage. For everything else, leave `pinned` out and let people dismiss it.
 
 ### `apps` — showing it in only some places
 

@@ -56,6 +56,8 @@ The feed is a flat array, newest first:
     "id": "2026-03-14-march-maintenance",
     "title": "Scheduled maintenance Friday",
     "level": "danger",
+    "type": "maintenance",
+    "pinned": false,
     "apps": ["landing", "form", "vpe"],
     "starts": "2026-03-10",
     "expires": "2026-03-16",
@@ -66,6 +68,10 @@ The feed is a flat array, newest first:
 ]
 ```
 
+- `level` is severity (colour); `type` is category (icon). Both are always present,
+  `type` defaulting to `announcement`.
+- `pinned` is always present. A pinned announcement sorts first, should always show
+  its banner, and **must not be dismissible** in the consumer.
 - `description` is the first paragraph as plain text — banner copy.
 - `body` is the full text as sanitized HTML — panel copy. Sanitizing happens at
   build time; links are rewritten with `target="_blank" rel="noopener noreferrer"`.
@@ -75,6 +81,7 @@ The feed is a flat array, newest first:
 - `apps` is always present, defaulting to all three. **Consumers must filter on
   this too.**
 - `expires` is exclusive: an announcement stops showing on that date.
+- Order is pinned first, then newest first.
 
 Treat a failed fetch as "no announcements" and never block app render on it.
 

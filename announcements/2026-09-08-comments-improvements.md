@@ -1,6 +1,7 @@
 ---
 title: Improvements to comments
 level: success
+type: update
 apps: [vpe]
 expires: 2026-10-15
 ---

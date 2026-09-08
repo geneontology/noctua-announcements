@@ -1,6 +1,7 @@
 ---
 title: Visual Pathway Editor
 level: info
+type: reminder
 apps: [landing, form, vpe]
 starts: 2022-07-18
 expires: 2022-12-31

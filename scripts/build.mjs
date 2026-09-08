@@ -19,6 +19,7 @@ const SOURCE_DIR = 'announcements'
 const OUTPUT_DIR = 'dist'
 const OUTPUT_FILE = join(OUTPUT_DIR, 'announcements.json')
 const ALL_APPS = ['landing', 'form', 'vpe']
+const DEFAULT_TYPE = 'announcement'
 
 const ajv = new Ajv({ allErrors: true })
 addFormats(ajv)
@@ -129,6 +130,8 @@ for (const file of files) {
     id,
     title: data.title,
     level: data.level,
+    type: data.type ?? DEFAULT_TYPE,
+    pinned: data.pinned ?? false,
     apps: data.apps ?? ALL_APPS,
     starts: data.starts ?? null,
     expires: data.expires ?? null,
@@ -150,8 +153,10 @@ if (problems.length) {
   process.exit(1)
 }
 
-// Newest first. Files with no "starts" fall back to the date in their filename.
+// Pinned first, then newest first. Files with no "starts" fall back to the date
+// in their filename.
 announcements.sort((a, b) => {
+  if (a.pinned !== b.pinned) return a.pinned ? -1 : 1
   const key = x => x.starts ?? (x.id.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? '0000-00-00')
   return key(b).localeCompare(key(a))
 })
@@ -162,5 +167,6 @@ writeFileSync(OUTPUT_FILE, JSON.stringify(announcements, null, 2) + '\n')
 console.log(`Published ${announcements.length} announcement(s) to ${OUTPUT_FILE}`)
 for (const a of announcements) {
   const window = [a.starts ?? 'now', a.expires ?? 'never'].join(' → ')
-  console.log(`  ${a.level.padEnd(7)} ${window.padEnd(26)} ${a.title}`)
+  const pin = a.pinned ? '📌 ' : '   '
+  console.log(`  ${pin}${a.type.padEnd(12)} ${a.level.padEnd(7)} ${window.padEnd(26)} ${a.title}`)
 }

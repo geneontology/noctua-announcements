@@ -14,7 +14,15 @@
     },
     "level": {
       "enum": ["info", "success", "warning", "danger"],
-      "description": "Importance, which picks the background color."
+      "description": "How urgent it is, which picks the color."
+    },
+    "type": {
+      "enum": ["announcement", "update", "reminder", "maintenance", "event"],
+      "description": "What kind of thing it is, which picks the icon. Defaults to announcement."
+    },
+    "pinned": {
+      "type": "boolean",
+      "description": "Keep it at the top and stop people dismissing it. Use sparingly."
     },
     "apps": {
       "type": "array",

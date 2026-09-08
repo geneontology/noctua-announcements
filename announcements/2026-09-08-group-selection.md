@@ -1,6 +1,7 @@
 ---
 title: Select and move groups of activities
 level: success
+type: update
 apps: [vpe]
 expires: 2026-10-15
 ---
