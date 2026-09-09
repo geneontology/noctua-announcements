@@ -72,7 +72,10 @@ function toSafeHtml(markdown) {
       'p', 'br', 'strong', 'em', 'code', 'pre', 'blockquote',
       'ul', 'ol', 'li', 'a', 'h3', 'h4', 'h5', 'h6', 'hr',
     ],
-    allowedAttributes: { a: ['href'] },
+    // target/rel have to be allowed here as well as set in transformTags below —
+    // sanitize-html applies the allowlist *after* the transform, so leaving them
+    // out silently strips the attributes the transform just added.
+    allowedAttributes: { a: ['href', 'target', 'rel'] },
     allowedSchemes: ['http', 'https', 'mailto'],
     transformTags: {
       a: sanitizeHtml.simpleTransform('a', { target: '_blank', rel: 'noopener noreferrer' }),
