@@ -2,7 +2,7 @@
   "name": "noctua-announcements",
   "version": "1.0.0",
   "private": true,
-  "description": "Announcements shown in the Noctua landing page, Form Editor and Visual Pathway Editor",
+  "description": "Announcements shown in the Noctua landing page, Standard Annotation Editor and Visual Pathway Editor",
   "scripts": {
     "build": "node scripts/build.mjs"
   },

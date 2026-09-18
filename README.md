@@ -1,7 +1,7 @@
 # Noctua Announcements
 
-Announcements shown in the Noctua landing page, the Noctua Form Editor and the
-Visual Pathway Editor — planned outages, updates, new feature documentation,
+Announcements shown in the Noctua landing page, the Standard Annotation Editor and
+the Visual Pathway Editor — planned outages, updates, new feature documentation,
 getting started links, and anything else worth putting in front of active Noctua
 users.
 
@@ -32,7 +32,7 @@ announcements/*.md  →  GitHub Action  →  announcements.json  →  Noctua app
 
 One Markdown file per announcement in [`announcements/`](announcements). Each has
 a YAML frontmatter block for the settings and Markdown below it for the text.
-Commit to `dev` and a GitHub Action validates every file, builds them into a
+Commit to `main` and a GitHub Action validates every file, builds them into a
 single JSON feed, and publishes it to GitHub Pages.
 
 **If validation fails, nothing is published and the previous feed stays live.**
@@ -58,7 +58,8 @@ The feed is a flat array, newest first:
     "level": "danger",
     "type": "maintenance",
     "pinned": false,
-    "apps": ["landing", "form", "vpe"],
+    "testing": false,
+    "apps": ["landing-page", "sae", "vpe"],
     "starts": "2026-03-10",
     "expires": "2026-03-16",
     "description": "Noctua will be down for about 30 minutes on Friday at 4:00 PM PST.",
@@ -78,8 +79,12 @@ The feed is a flat array, newest first:
 - `starts` / `expires` are `YYYY-MM-DD` or `null`. **Consumers must filter on
   these** — the feed ships every announcement, active or not. Compare as strings
   against the local date to avoid a UTC off-by-one.
-- `apps` is always present, defaulting to all three. **Consumers must filter on
-  this too.**
+- `apps` is always present, defaulting to all three: `landing-page`, `sae`
+  (Standard Annotation Editor), `vpe` (Visual Pathway Editor). **Consumers must
+  filter on this too.**
+- `testing` is always present, defaulting to `false`. `true` means the announcement
+  is a draft: **consumers must show it only in a non-production build — the dev site —
+  and never in production.**
 - `expires` is exclusive: an announcement stops showing on that date.
 - Order is pinned first, then newest first.
 

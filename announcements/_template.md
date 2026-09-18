@@ -2,7 +2,7 @@
 title: Short headline goes here
 level: info
 type: announcement
-apps: [landing, form, vpe]
+apps: [landing-page, sae, vpe]
 starts: 2026-01-01
 expires: 2026-01-31
 ---

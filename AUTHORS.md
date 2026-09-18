@@ -46,6 +46,7 @@ of the announcement.
 | `expires` | no | The day it stops showing, as `YYYY-MM-DD`. Leave it out and it shows forever. |
 | `starts` | no | The day it starts showing, as `YYYY-MM-DD`. Leave it out and it shows right away. |
 | `apps` | no | Which apps show it. Leave it out and all three do. |
+| `testing` | no | `true` shows it only on the dev site, so you can see how it reads before everyone does. |
 | `descriptionUrl` | no | A link to a Google Doc, wiki page, or slides, shown as a "More details" button. |
 
 ### `level` — the colors
@@ -100,11 +101,30 @@ Leave `apps` out and the announcement shows everywhere. To narrow it:
 
 ```
 apps: [vpe]                  # Visual Pathway Editor only
-apps: [form, vpe]            # both editors, not the landing page
+apps: [sae, vpe]             # both editors, not the landing page
 ```
 
-The three names are `landing` (the Noctua landing page), `form` (the Form Editor)
-and `vpe` (the Visual Pathway Editor).
+The three names are `landing-page` (the Noctua landing page), `sae` (the Standard
+Annotation Editor) and `vpe` (the Visual Pathway Editor).
+
+### `testing` — trying one out before everyone sees it
+
+Add `testing: true` and the announcement shows **only on the dev site**. The live
+site never shows it, no matter what the other settings say.
+
+```
+---
+title: Draft — new evidence picker
+level: info
+testing: true
+---
+
+Checking how this reads before it goes out.
+```
+
+Use it when you want to see how an announcement actually looks in the app first.
+When you're happy with it, delete the `testing: true` line and commit again —
+that same announcement then goes live everywhere.
 
 ### `starts` and `expires` — scheduling
 

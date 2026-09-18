@@ -18,7 +18,7 @@ import addFormats from 'ajv-formats'
 const SOURCE_DIR = 'announcements'
 const OUTPUT_DIR = 'dist'
 const OUTPUT_FILE = join(OUTPUT_DIR, 'announcements.json')
-const ALL_APPS = ['landing', 'form', 'vpe']
+const ALL_APPS = ['landing-page', 'sae', 'vpe']
 const DEFAULT_TYPE = 'announcement'
 
 const ajv = new Ajv({ allErrors: true })
@@ -135,6 +135,7 @@ for (const file of files) {
     level: data.level,
     type: data.type ?? DEFAULT_TYPE,
     pinned: data.pinned ?? false,
+    testing: data.testing ?? false,
     apps: data.apps ?? ALL_APPS,
     starts: data.starts ?? null,
     expires: data.expires ?? null,
@@ -171,5 +172,8 @@ console.log(`Published ${announcements.length} announcement(s) to ${OUTPUT_FILE}
 for (const a of announcements) {
   const window = [a.starts ?? 'now', a.expires ?? 'never'].join(' → ')
   const pin = a.pinned ? '📌 ' : '   '
-  console.log(`  ${pin}${a.type.padEnd(12)} ${a.level.padEnd(7)} ${window.padEnd(26)} ${a.title}`)
+  const where = a.testing ? ' [dev only]' : ''
+  console.log(
+    `  ${pin}${a.type.padEnd(12)} ${a.level.padEnd(7)} ${window.padEnd(26)} ${a.title}${where}`
+  )
 }

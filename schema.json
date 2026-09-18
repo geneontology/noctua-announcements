@@ -24,11 +24,15 @@
       "type": "boolean",
       "description": "Keep it at the top and stop people dismissing it. Use sparingly."
     },
+    "testing": {
+      "type": "boolean",
+      "description": "true shows it only on the dev site, never on the live one. Defaults to false."
+    },
     "apps": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "enum": ["landing", "form", "vpe"] },
+      "items": { "enum": ["landing-page", "sae", "vpe"] },
       "description": "Which apps show this. Omit to show in all of them."
     },
     "starts": {
