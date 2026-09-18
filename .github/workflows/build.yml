@@ -1,13 +1,13 @@
 name: Publish announcements
 
-# Runs whenever an announcement is added, edited or removed on dev.
+# Runs whenever an announcement is added, edited or removed on main.
 #
 # If the build step fails, the deploy step is skipped and the announcements that
 # are already published stay live. A broken commit can never take the banner down.
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
     paths:
       - 'announcements/**'
       - 'schema.json'
