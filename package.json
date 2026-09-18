@@ -5,7 +5,7 @@
   "description": "Announcements shown in the Noctua landing page, Standard Annotation Editor and Visual Pathway Editor",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test scripts/"
+    "test": "node --test"
   },
   "dependencies": {
     "ajv": "^8.17.1",

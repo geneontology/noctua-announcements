@@ -106,7 +106,7 @@ Treat a failed fetch as "no announcements" and never block app render on it.
 ```
 npm install
 npm run build      # writes dist/announcements.json
-npm test           # node --test, no framework
+npm test           # node's own test runner, no framework
 ```
 
 The build prints each announcement with its level and active window, and lists
