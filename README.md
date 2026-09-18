@@ -76,9 +76,20 @@ The feed is a flat array, newest first:
 - `description` is the first paragraph as plain text — banner copy.
 - `body` is the full text as sanitized HTML — panel copy. Sanitizing happens at
   build time; links are rewritten with `target="_blank" rel="noopener noreferrer"`.
-- `starts` / `expires` are `YYYY-MM-DD` or `null`. **Consumers must filter on
-  these** — the feed ships every announcement, active or not. Compare as strings
-  against the local date to avoid a UTC off-by-one.
+- `starts` / `expires` are `null`, a date, or an absolute instant:
+  - `"2026-03-14"` means the **whole of that day in the viewer's own timezone**.
+    `starts` is its first moment, `expires` its last — an announcement expiring on
+    the 14th is still showing all through the 14th and gone on the 15th. Resolve
+    these locally, never in UTC, or the day flips at the wrong moment.
+  - `"2026-03-14T23:00:00.000Z"` is an exact moment, already converted from the
+    author's timezone at build time. Compare it against the clock as it is.
+  - The build leaves out anything that expired more than two days ago, so the feed
+    stays small however many announcements accumulate. **Consumers must still
+    filter**: the feed carries ones that have not started, ones ending today, and
+    ones that ended since the last build.
+  - A consumer showing a timed announcement should re-check when the next `starts`
+    or `expires` falls due, not only when it refetches, or a window will stay open
+    past its end.
 - `apps` is always present, defaulting to all three: `landing-page`, `sae`
   (Standard Annotation Editor), `vpe` (Visual Pathway Editor). **Consumers must
   filter on this too.**

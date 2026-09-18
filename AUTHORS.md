@@ -129,15 +129,36 @@ that same announcement then goes live everywhere.
 ### `starts` and `expires` — scheduling
 
 You can write an announcement ahead of time. This one appears on March 10th and
-disappears on its own after March 16th:
+shows all the way through March 16th:
 
 ```
 starts: 2026-03-10
 expires: 2026-03-16
 ```
 
+A date on its own means the **whole day**. `expires: 2026-03-16` runs to the end
+of the 16th, so the announcement is still up all that day and gone on the 17th.
+
 `expires` is the one worth using often — it means you don't have to remember to
 come back and take the announcement down.
+
+**Adding a time.** For something that starts or ends at a particular moment — a
+maintenance window, say — put a 24-hour time after the date:
+
+```
+starts: 2026-03-14 16:00
+expires: 2026-03-14 18:00
+```
+
+Times are **Pacific** (the timezone Noctua's servers run in). Everyone sees the
+banner at the same moment wherever they are: 4pm Pacific is 7pm in Boston and
+midnight in London, and each of them sees it appear on their own clock at the
+right time. Write the time in the text too if it matters to people — the banner
+says what you write, not what their clock says.
+
+Once the date passes, the next build stops publishing it and the build log says so.
+The file stays in `announcements/` as a record; delete it when you no longer want
+it around.
 
 ## The text below the settings
 

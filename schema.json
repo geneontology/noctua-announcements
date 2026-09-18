@@ -37,13 +37,13 @@
     },
     "starts": {
       "type": "string",
-      "format": "date",
-      "description": "YYYY-MM-DD. The day it starts showing. Omit to show immediately."
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}( \\d{2}:\\d{2})?$",
+      "description": "YYYY-MM-DD, optionally with a 24-hour time (2026-03-14 16:00, Pacific). The day or moment it starts showing. Omit to show immediately."
     },
     "expires": {
       "type": "string",
-      "format": "date",
-      "description": "YYYY-MM-DD. The day it stops showing. Omit to show forever."
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}( \\d{2}:\\d{2})?$",
+      "description": "YYYY-MM-DD, optionally with a 24-hour time (2026-03-14 16:00, Pacific). A bare date runs to the end of that day. Omit to show forever."
     },
     "descriptionUrl": {
       "type": "string",

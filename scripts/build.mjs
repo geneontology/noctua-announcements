@@ -10,16 +10,24 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs'
 import { join, basename } from 'node:path'
 import matter from 'gray-matter'
+import yaml from 'js-yaml'
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import { instantOf, isLongExpired, toFeedValue } from './schedule.mjs'
 
 const SOURCE_DIR = 'announcements'
 const OUTPUT_DIR = 'dist'
 const OUTPUT_FILE = join(OUTPUT_DIR, 'announcements.json')
 const ALL_APPS = ['landing-page', 'sae', 'vpe']
 const DEFAULT_TYPE = 'announcement'
+
+// YAML would turn an unquoted 2026-03-14 into a Date, and 2026-03-14 16:00:00
+// into another one read as UTC — which is not the timezone the author meant.
+// Parsing with the core schema keeps every value a plain string, so schedule.mjs
+// is the only thing that interprets a date or a time.
+const yamlEngine = source => yaml.load(source, { schema: yaml.CORE_SCHEMA })
 
 const ajv = new Ajv({ allErrors: true })
 addFormats(ajv)
@@ -37,27 +45,16 @@ function explain(error) {
       return `"${error.params.additionalProperty}" is not a field you can use here — check it for typos`
     case 'enum':
       return `"${field}" must be one of: ${error.params.allowedValues.join(', ')}`
+    case 'pattern':
+      return `"${field}" must be a date written as YYYY-MM-DD, for example 2026-03-14 — ` +
+        'add a 24-hour time after it for a specific moment, like 2026-03-14 16:00'
     case 'format':
-      return error.params.format === 'date'
-        ? `"${field}" must be a date written as YYYY-MM-DD, for example 2026-03-14`
-        : `"${field}" must be a full web address starting with https://`
+      return `"${field}" must be a full web address starting with https://`
     case 'type':
       return `"${field}" must be ${error.params.type}`
     default:
       return `"${field}" ${error.message}`
   }
-}
-
-// YAML turns an unquoted 2026-03-14 into a Date object, so the schema's string
-// check would reject a perfectly good date. Put it back to YYYY-MM-DD before
-// validating rather than making authors remember to quote their dates.
-function normalizeDates(data) {
-  for (const field of ['starts', 'expires']) {
-    if (data[field] instanceof Date) {
-      data[field] = data[field].toISOString().slice(0, 10)
-    }
-  }
-  return data
 }
 
 function toPlainText(markdown) {
@@ -88,6 +85,7 @@ const files = readdirSync(SOURCE_DIR)
   .sort()
 
 const announcements = []
+const expired = []
 
 for (const file of files) {
   const path = join(SOURCE_DIR, file)
@@ -96,7 +94,7 @@ for (const file of files) {
 
   let parsed
   try {
-    parsed = matter(readFileSync(path, 'utf8'))
+    parsed = matter(readFileSync(path, 'utf8'), { engines: { yaml: yamlEngine } })
   } catch {
     problems.push([path, ['the block of settings at the top of the file could not be read — ' +
       'check that it starts and ends with a line of three dashes (---) and that every line ' +
@@ -105,13 +103,19 @@ for (const file of files) {
   }
 
   const { content } = parsed
-  const data = normalizeDates(parsed.data)
+  const data = parsed.data
 
   if (!validate(data)) {
     fileProblems.push(...validate.errors.map(explain))
   }
 
-  if (data.starts && data.expires && data.expires < data.starts) {
+  // Only worth checking once both parsed; a malformed value is already reported.
+  if (
+    typeof data.starts === 'string' &&
+    typeof data.expires === 'string' &&
+    !fileProblems.length &&
+    instantOf(data.expires, 'end') <= instantOf(data.starts, 'start')
+  ) {
     fileProblems.push(`"expires" (${data.expires}) is before "starts" (${data.starts}) — ` +
       'this announcement would never show')
   }
@@ -127,6 +131,11 @@ for (const file of files) {
     continue
   }
 
+  if (isLongExpired(data.expires)) {
+    expired.push([id, data.expires])
+    continue
+  }
+
   const firstParagraph = body.split(/\n\s*\n/)[0]
 
   announcements.push({
@@ -137,8 +146,8 @@ for (const file of files) {
     pinned: data.pinned ?? false,
     testing: data.testing ?? false,
     apps: data.apps ?? ALL_APPS,
-    starts: data.starts ?? null,
-    expires: data.expires ?? null,
+    starts: toFeedValue(data.starts),
+    expires: toFeedValue(data.expires),
     description: toPlainText(firstParagraph),
     body: toSafeHtml(body),
     descriptionUrl: data.descriptionUrl ?? null,
@@ -176,4 +185,10 @@ for (const a of announcements) {
   console.log(
     `  ${pin}${a.type.padEnd(12)} ${a.level.padEnd(7)} ${window.padEnd(26)} ${a.title}${where}`
   )
+}
+
+if (expired.length) {
+  console.log(`\nLeft out ${expired.length} expired announcement(s):`)
+  for (const [id, on] of expired) console.log(`     ${id} (expired ${on})`)
+  console.log('\nThey stay in announcements/ — delete the files when you no longer want them.')
 }
