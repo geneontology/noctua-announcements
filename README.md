@@ -42,7 +42,7 @@ went wrong.
 
 ## For developers
 
-**Feed URL:** `https://tmushayahama.github.io/noctua-announcements/announcements.json`
+**Feed URL:** `https://geneontology.github.io/noctua-announcements/announcements.json`
 
 Served by GitHub Pages with `Access-Control-Allow-Origin: *`, so it's fetchable
 from the browser. Pages purges its CDN on deploy, but browsers cache for 10
