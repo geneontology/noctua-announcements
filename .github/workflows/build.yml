@@ -31,18 +31,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - run: npm install --no-audit --no-fund
+      # ci, not install: package-lock.json is committed, so the build that
+      # publishes is the one that was tested.
+      - run: npm ci --no-audit --no-fund
+
+      # Before the build, so a broken script fails here with a readable test
+      # name rather than half-way through publishing.
+      - name: Test
+        run: npm test
 
       - name: Build announcements.json
         run: npm run build
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -54,4 +61,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
