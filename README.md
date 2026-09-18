@@ -106,10 +106,14 @@ Treat a failed fetch as "no announcements" and never block app render on it.
 ```
 npm install
 npm run build      # writes dist/announcements.json
+npm test           # node --test, no framework
 ```
 
-The build prints each announcement with its level and active window, which is a
-quick way to sanity-check scheduling before committing.
+The build prints each announcement with its level and active window, and lists
+the expired ones it left out — a quick way to sanity-check scheduling before
+committing.
 
 Frontmatter rules live in [`schema.json`](schema.json); the build is
-[`scripts/build.mjs`](scripts/build.mjs).
+[`scripts/build.mjs`](scripts/build.mjs) and the dates and times it understands
+are in [`scripts/schedule.mjs`](scripts/schedule.mjs). CI runs the tests before
+the build, so a broken script fails before anything is published.
