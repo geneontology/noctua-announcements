@@ -1,12 +1,16 @@
 ---
 title: Short headline goes here
-level: info
-type: announcement
-apps: [landing-page, sae, vpe]
-starts: 2026-01-01
-expires: 2026-01-31
+level: info                     # one of: info, success, warning, danger
+type: announcement              # one of: announcement, update, reminder, maintenance, event
+pinned: false                   # true pins it at the top, and nobody can dismiss it
+testing: false                  # true shows it only on the dev site, not the live one
+apps: [landing-page, sae, vpe]  # any of: landing-page, sae, vpe
+starts: 2026-01-01              # leave out to show right away
+expires: 2026-01-31             # leave out to show forever
 # A date means the whole day. For a precise moment add a 24-hour time, Pacific:
 #   starts: 2026-01-01 16:00
+# For a "More details" button, remove the "# " from the next line and put in your link:
+# descriptionUrl: https://docs.google.com/...
 ---
 
 The first paragraph is what shows in the banner, so keep it to one or two sentences.
