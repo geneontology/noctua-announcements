@@ -1,7 +1,7 @@
 ---
 title: New dangerous functionality
 level: danger
-type: danger
+type: update
 apps: [vpe]
 starts: 2026-09-22
 expires: 2027-01-31
