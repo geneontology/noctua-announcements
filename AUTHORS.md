@@ -216,3 +216,5 @@ title: 'Meeting: Cal Tech'
 
 **Forgetting the closing `---`.** The settings block needs a line of three dashes
 above it and another below it.
+
+**File name MUST end with .md`.** 
