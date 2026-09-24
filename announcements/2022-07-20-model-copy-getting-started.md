@@ -2,6 +2,7 @@
 title: New Model Copy Getting Started
 level: info
 type: reminder
+testing: true
 starts: 2022-07-20
 expires: 2022-12-31
 ---
