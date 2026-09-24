@@ -5,7 +5,7 @@ type: update
 apps: [vpe]
 testing: true
 starts: 2022-07-20
-expires: 2028-07-28
+expires: 2022-07-28
 ---
 
 Highlights: Model Copy. Updated Ontology.
