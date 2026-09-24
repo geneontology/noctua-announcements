@@ -3,7 +3,7 @@ title: VPE update 2026-09-22
 level: info
 type: announcement
 apps: [vpe]
-pinned: true
+testing: true
 starts: 2026-09-22
 expires: 2026-09-28
 # A date means the whole day. For a precise moment add a 24-hour time, Pacific:
