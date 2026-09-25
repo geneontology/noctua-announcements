@@ -1,33 +1,24 @@
 ---
-title: Select and move groups of activities
+title: Select, move, copy, delete groups of activities within and across models
 level: success
 type: update
 apps: [vpe]
-testing: true
-expires: 2026-10-15
+starts: 2026-09-26
+expires: 2026-12-31
 ---
 
-You can now select several activities at once and move, copy, or delete them
-together, PowerPoint style.
+It is now possible to select several activities at once and move, copy, or delete them
+together.
 
-- **Select a group** by dragging a box around it, or shift-clicking activities
-  one at a time. Drag the group and everything moves together, keeping its
-  shape.
-- **Copy and paste a whole region** — the activities and the relations between
-  them — with `Ctrl+C` / `Ctrl+V`, the toolbar, or right-click. Paste works
-  across models and shows you a preview of what you are about to create.
-  Bringing the evidence along is optional.
-- **Delete a selection** in one go, from the toolbar, the right-click menu, or
-  the Delete key.
-- **Duplicate a selection** in place with `Ctrl+D`.
-- **Auto Layout** now tidies just your selection when you have one, and
-  remembers the positions afterwards.
-- **The Select menu** picks activities out for you: all of them, the inverse of
-  what is selected, or only those of a given type, missing evidence, or
-  carrying comments.
-- **Search the model** from the toolbar to find an activity by term, term ID,
-  PMID, or evidence. It tells you which field matched, and when several match
-  it offers to select them all at once.
+- **Select a group** by drawing a box around it with your mouse, or by shift- or control-clicking activities one at a time.
+- **Move a group** by dragging the group moves all the nodes and relations together, keeping the shape constant.
+- **Copy and paste nodes**: selected nodes can be copied either with `Ctrl+C` / `Ctrl+V`, the toolbar, or via the menu accessible by the right-click.
+  Paste works across models (single or multiple activity units plus relations). Evidence is copied by default, but that option can be unselected.
+- **Delete a selection** all nodes in the selection, including any relation between 
+  these nodes, can be deleted from the toolbar, the right-click menu, or
+  the Delete key of your keyboard.
+- **Auto Layout** When nodes are selected, ` Auto Layout ` tidies only the selected nodes/relations,
+  and remembers the new positions afterwards.
 
-Right-click paste no longer needs the clipboard permission that Firefox never
-granted.
+
+
