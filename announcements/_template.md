@@ -20,3 +20,8 @@ You can use **bold**, [links](https://geneontology.org), and lists:
 
 - like this
 - and this
+
+----
+
+- Suggestions for improvements can be made in the [VPE GitHub tracker](https://github.com/geneontology/noctua-visual-pathway-editor/issues/new)
+- [VPE documentation](https://docs.google.com/document/d/1a5YZBJrnJ9LKJxPVpXk62dJJGpHB2b9zH8-xr_Rm1Vs/edit?tab=t.0#heading=h.xxqwc88waqz5)
