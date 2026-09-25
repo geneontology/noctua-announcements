@@ -1,0 +1,22 @@
+---
+title: New feature - Select and find nodes
+level: success
+type: update
+apps: [vpe]
+starts: 2026-09-26
+expires: 2026-12-31
+---
+
+It is now possible to select several one ore more activities based on specific criteria. Tow new options are in the top menu: 
+
+(1) ***Select***: Picks one or multiple activity units according to the selection criteria: either all activities, all chemicals, 
+all protein complexes, or activity units without evidence, activity units with comments, or disconnected nodes. 
+It is also possible to select the inverse of what is selected, using "Invert selection".  carrying comments.
+(2) ***Find in model***: Picks one or multiple activity units according to the search criteria: either a gene, 
+a chemical, a reference, or an evidence. The user can choose to highlight a single activity unit, or all activity units matching the criteria. 
+
+The selected activity units can be copied/pasted or deleted.
+
+
+
+
