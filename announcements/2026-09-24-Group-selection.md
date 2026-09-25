@@ -20,4 +20,7 @@ together.
 - **Auto Layout** When nodes are selected, ` Auto Layout ` tidies only the selected nodes/relations,
   and remembers the new positions afterwards.
 
-Suggestions for improvements can be made in the [VPE GitHub tracker](https://github.com/geneontology/noctua-visual-pathway-editor/issues/new)
+----
+
+- Suggestions for improvements can be made in the [VPE GitHub tracker](https://github.com/geneontology/noctua-visual-pathway-editor/issues/new)
+- [VPE documentation on group selection of nodes](https://docs.google.com/document/d/1a5YZBJrnJ9LKJxPVpXk62dJJGpHB2b9zH8-xr_Rm1Vs/edit?tab=t.0#heading=h.r57ri3xq68p3)
