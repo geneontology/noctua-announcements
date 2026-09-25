@@ -3,7 +3,7 @@ title: Improvements to comments
 level: success
 type: update
 apps: [vpe]
-starts: 2026-09-26
+starts: 2026-09-25
 expires: 2026-12-31
 ---
 
