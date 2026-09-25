@@ -7,8 +7,7 @@ starts: 2026-09-26
 expires: 2026-12-31
 ---
 
-Comment icons are always visible now, and a dispute opens a GitHub ticket with
-your comment already written into it.
+Changes: 
 
 - The comment icon is **always shown** on a row, grey when nothing is written
   yet, so you no longer have to hover to find it.
@@ -24,4 +23,7 @@ your comment already written into it.
 - **Ontology term pending** comments can now open a ticket on the GO ontology
   tracker.
 
-Suggestions for improvements can be made in the [VPE GitHub tracker](https://github.com/geneontology/noctua-visual-pathway-editor/issues/new)
+----
+
+- Suggestions for improvements can be made in the [VPE GitHub tracker](https://github.com/geneontology/noctua-visual-pathway-editor/issues/new)
+- [VPE documentation on comments](https://docs.google.com/document/d/1a5YZBJrnJ9LKJxPVpXk62dJJGpHB2b9zH8-xr_Rm1Vs/edit?tab=t.0#heading=h.kyv42i77lu9o)
