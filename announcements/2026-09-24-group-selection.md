@@ -1,5 +1,5 @@
 ---
-title: Select, move, copy, delete groups of activities within and across models
+title: New feature: Select, move, copy, delete groups of activities within and across models
 level: success
 type: update
 apps: [vpe]
