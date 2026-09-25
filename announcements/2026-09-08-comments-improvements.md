@@ -3,8 +3,8 @@ title: Improvements to comments
 level: success
 type: update
 apps: [vpe]
-testing: true
-expires: 2026-10-15
+starts: 2026-09-26
+expires: 2026-12-31
 ---
 
 Comment icons are always visible now, and a dispute opens a GitHub ticket with
@@ -24,4 +24,4 @@ your comment already written into it.
 - **Ontology term pending** comments can now open a ticket on the GO ontology
   tracker.
 
-These came out of the comments review with the Swiss-Prot curators.
+Suggestions for improvements can be made in the [VPE GitHub tracker](https://github.com/geneontology/noctua-visual-pathway-editor/issues/new)
