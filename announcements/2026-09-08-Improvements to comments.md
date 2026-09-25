@@ -7,7 +7,7 @@ starts: 2026-09-25
 expires: 2026-12-31
 ---
 
-Changes: 
+Changes: comment icons are now always visible, evidence and annotation disputes now have direct links to open GitHub issues
 
 - The comment icon is **always shown** on a row, grey when nothing is written
   yet, so you no longer have to hover to find it.
